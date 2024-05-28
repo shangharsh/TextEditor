@@ -30,11 +30,10 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TxtTextDocument = new System.Windows.Forms.TextBox();
-            this.LblFileName = new System.Windows.Forms.Label();
-            this.TxtFileName = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +52,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OpenToolStripMenuItem,
             this.SaveToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.fileToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -60,59 +60,48 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(57, 27);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // OpenToolStripMenuItem
+            // 
+            this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(166, 34);
+            this.OpenToolStripMenuItem.Text = "Open";
+            this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
+            // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(166, 34);
             this.SaveToolStripMenuItem.Text = "Save";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(166, 34);
             this.ExitToolStripMenuItem.Text = "Exit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // TxtTextDocument
             // 
             this.TxtTextDocument.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTextDocument.Location = new System.Drawing.Point(6, 42);
+            this.TxtTextDocument.Location = new System.Drawing.Point(6, 83);
             this.TxtTextDocument.Multiline = true;
             this.TxtTextDocument.Name = "TxtTextDocument";
-            this.TxtTextDocument.Size = new System.Drawing.Size(1173, 561);
+            this.TxtTextDocument.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TxtTextDocument.Size = new System.Drawing.Size(1173, 520);
             this.TxtTextDocument.TabIndex = 1;
-            // 
-            // LblFileName
-            // 
-            this.LblFileName.AutoSize = true;
-            this.LblFileName.BackColor = System.Drawing.SystemColors.Control;
-            this.LblFileName.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblFileName.Location = new System.Drawing.Point(904, 9);
-            this.LblFileName.Name = "LblFileName";
-            this.LblFileName.Size = new System.Drawing.Size(107, 23);
-            this.LblFileName.TabIndex = 2;
-            this.LblFileName.Text = "FileName:";
-            // 
-            // TxtFileName
-            // 
-            this.TxtFileName.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtFileName.Location = new System.Drawing.Point(1017, 7);
-            this.TxtFileName.Name = "TxtFileName";
-            this.TxtFileName.Size = new System.Drawing.Size(156, 32);
-            this.TxtFileName.TabIndex = 3;
+            this.TxtTextDocument.WordWrap = false;
             // 
             // TextEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1185, 609);
-            this.Controls.Add(this.TxtFileName);
-            this.Controls.Add(this.LblFileName);
             this.Controls.Add(this.TxtTextDocument);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "TextEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TextEditor";
@@ -130,7 +119,6 @@
         private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.TextBox TxtTextDocument;
-        private System.Windows.Forms.Label LblFileName;
-        private System.Windows.Forms.TextBox TxtFileName;
+        private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
     }
 }

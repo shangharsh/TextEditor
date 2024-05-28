@@ -19,28 +19,40 @@ namespace TextEditor
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (TxtFileName.TextLength > 0 && TxtTextDocument.TextLength > 0)
+            if (TxtTextDocument.TextLength > 0)
             {
-                string fn;
-                string textDoc;
-                fn = "C:\\Users\\shang\\OneDrive\\Desktop\\" + TxtFileName.Text + ".txt";
-                textDoc = this.TxtTextDocument.Text;    
-                System.IO.File.WriteAllText(fn, textDoc);
-                MessageBox.Show("File Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                TxtFileName.Clear();
-                TxtTextDocument.Clear();
+
+                var fD = new System.Windows.Forms.SaveFileDialog();
+                fD.Filter = "Text (*.txt)|*.txt|Word Doc (*.doc)|*.doc";
+                if (fD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string textDoc = this.TxtTextDocument.Text;    
+                    System.IO.File.WriteAllText(fD.FileName, textDoc);
+                    MessageBox.Show("File Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TxtTextDocument.Clear();
+                }
             }
             else
             {
                 MessageBox.Show("Please Enter FileName or Text you want to Save First.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            //this.ShowDialog();
-            //string fn = "C:\\Users\\shang\\OneDrive\\Desktop" + +".txt";
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var FD = new System.Windows.Forms.OpenFileDialog();
+            if (FD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(FD.FileName);
+                TxtTextDocument.Text = sr.ReadToEnd();
+                sr.Close();
+            }
         }
     }
 }
