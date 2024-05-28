@@ -22,12 +22,12 @@ namespace TextEditor
             if (TxtTextDocument.TextLength > 0)
             {
 
-                var fD = new System.Windows.Forms.SaveFileDialog();
-                fD.Filter = "Text (*.txt)|*.txt|Word Doc (*.doc)|*.doc";
-                if (fD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                SaveFileDialog sFD = new SaveFileDialog();
+                sFD.Filter = "Text (*.txt)|*.txt|Word Doc (*.doc)|*.doc";
+                if (sFD.ShowDialog() == DialogResult.OK)
                 {
                     string textDoc = this.TxtTextDocument.Text;    
-                    System.IO.File.WriteAllText(fD.FileName, textDoc);
+                    System.IO.File.WriteAllText(sFD.FileName, textDoc);
                     MessageBox.Show("File Added Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     TxtTextDocument.Clear();
                 }
@@ -45,14 +45,17 @@ namespace TextEditor
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var FD = new System.Windows.Forms.OpenFileDialog();
-            if (FD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            OpenFileDialog oFD = new OpenFileDialog();
+            if (oFD.ShowDialog() == DialogResult.OK)
             {
-                System.IO.StreamReader sr = new
-                   System.IO.StreamReader(FD.FileName);
-                TxtTextDocument.Text = sr.ReadToEnd();
-                sr.Close();
+                string readFile = System.IO.File.ReadAllText(oFD.FileName, Encoding.UTF8);
+                this.TxtTextDocument.Text = readFile;
             }
+        }
+
+        private void NewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TxtTextDocument.Clear();
         }
     }
 }
