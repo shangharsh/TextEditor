@@ -40,7 +40,15 @@ namespace TextEditor
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Are you sure want to close it?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else if (result == DialogResult.No)
+            {
+                MessageBox.Show("Click on No Button.");
+            }
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
